@@ -10,29 +10,32 @@ import { SpinnerDirective } from './spinner.directive';
 import { SpinnerHostDirective } from './spinner-host.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DisableDirective } from './disable.directive';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SpinnerDirective,
-    SpinnerHostDirective,
-    DisableDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    SpinnerDirective,
-    SpinnerHostDirective,
-    DisableDirective
-
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      SpinnerDirective,
+      SpinnerHostDirective,
+      DisableDirective,
+      TestComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MatFormFieldModule,
+      MaterialModule,
+      ReactiveFormsModule
+   ],
+   exports: [
+      SpinnerDirective,
+      SpinnerHostDirective,
+      DisableDirective
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
