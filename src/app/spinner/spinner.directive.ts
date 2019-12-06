@@ -31,9 +31,19 @@ export class SpinnerDirective implements OnInit, AfterViewInit {
   }
 
   start() {
+
+    if (this.element.nativeElement.tagName === 'MAT-FORM-FIELD') {
+      setTimeout(() => {
+        this.element.nativeElement.classList.add('mat-form-field-disabled');
+      });
+      console.log(this.element.nativeElement.classList);
+    }
     this.element.nativeElement.classList.add('spinner');
   }
   stop() {
+    if (this.element.nativeElement.tagName === 'MAT-FORM-FIELD') {
+      this.element.nativeElement.classList.remove('mat-form-field-disabled');
+    }
     this.element.nativeElement.classList.remove('spinner');
   }
 
