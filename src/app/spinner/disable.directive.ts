@@ -1,14 +1,14 @@
 import { Directive, ElementRef, OnInit, Optional, ViewChild, ContentChild, Injector } from '@angular/core';
-import { SpinnerHostDirective } from './spinner-host.directive';
 import { SpinnerEvent } from './spinner.model';
-import { FormControl, FormControlDirective, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
+import { SpinnerService } from './spinner.service';
 
 @Directive({
   selector: '[appDisable]'
 })
 export class DisableDirective implements OnInit {
 
-  constructor(private host: SpinnerHostDirective, private element: ElementRef, private injector: Injector) {
+  constructor(private host: SpinnerService, private element: ElementRef, private injector: Injector) {
     const key = this.element.nativeElement.getAttribute('appDisable');
     host.listen(key).subscribe(t => {
       switch (t) {
@@ -36,7 +36,7 @@ export class DisableDirective implements OnInit {
     const ngControl = this.injector.get(NgControl, null);
     if (ngControl && ngControl.control) {
       ngControl.control.enable();
-    }   
+    }
     this.element.nativeElement.removeAttribute('disabled');
   }
 

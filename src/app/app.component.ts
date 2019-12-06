@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { of, timer } from 'rxjs';
 import { startWith } from 'rxjs/operators';
-import { SpinnerHostDirective } from './spinner/spinner-host.directive';
+import { SpinnerService } from './spinner/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +10,9 @@ import { SpinnerHostDirective } from './spinner/spinner-host.directive';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild(SpinnerHostDirective, { static: true})
-  host: SpinnerHostDirective;
-
   title = 'spinner';
   formGroup: FormGroup;
-  constructor() {
+  constructor(private spinner: SpinnerService) {
     this.formGroup = new FormGroup({
       name1: new FormControl(''),
       name2: new FormControl(''),
@@ -23,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit() {
-    this.host.next('containers', timer(5000)).subscribe(t => {
+    this.spinner.next('containers', timer(5000)).subscribe(t => {
     });
 
   }
@@ -31,12 +28,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
   reload() {
-    this.host.next('containers', timer(5000)).subscribe(t => {
+    this.spinner.next('containers', timer(5000)).subscribe(t => {
 
     });
   }
   reload2() {
-    this.host.next('vehicles', timer(5000)).subscribe(t => {
+    this.spinner.next('vehicles', timer(5000)).subscribe(t => {
 
     });
   }
