@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { of, timer } from 'rxjs';
 import { startWith } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { SpinnerHostDirective } from './spinner/spinner-host.directive';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(SpinnerHostDirective, { static: true})
   host: SpinnerHostDirective;
 
@@ -23,6 +23,9 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
+
+  }
+  ngAfterViewInit() {
     this.host.next('containers', timer(5000)).subscribe(t => {
 
     });
