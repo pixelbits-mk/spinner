@@ -3,11 +3,11 @@ import { SpinnerHostDirective } from './spinner-host.directive';
 import { SpinnerEvent } from './spinner.model';
 
 @Directive({
-  selector: '[appDisableWhileLoading]'
+  selector: '[appDisable]'
 })
-export class DisableWhileLoadingDirective implements OnInit {
+export class DisableDirective implements OnInit {
   constructor(private host: SpinnerHostDirective, private element: ElementRef) {
-    const key = this.element.nativeElement.getAttribute('appDisableWhileLoading');
+    const key = this.element.nativeElement.getAttribute('appDisable');
     host.listen(key).subscribe(t => {
       switch (t) {
         case SpinnerEvent.START:

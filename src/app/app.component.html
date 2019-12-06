@@ -1,13 +1,13 @@
 <div appSpinnerHost [formGroup]="formGroup">
   <div class="example-container">
-    <mat-form-field  appSpinner="containers">
-      <input appDisableWhileLoading="containers" formControlName="name" matInput value="gjjgjgjgjhgjhjhjhjhjj" placeholder="Input">
+    <mat-form-field appSpinner="containers">
+      <input appDisable="containers" formControlName="name" matInput value="gjjgjgjgjhgjhjhjhjhjj" placeholder="Input">
     </mat-form-field>
   </div>
 
   <div appSpinner="containers" style="position: relative; background-color: blue; width: 300px; height: 300px">
     Hello
   </div>
-  <button appDisableWhileLoading="containers" (click)="reload()">Click Me</button>
+  <button appDisable="containers" (click)="reload()">Click Me</button>
 </div>
 

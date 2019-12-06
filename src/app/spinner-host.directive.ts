@@ -8,7 +8,6 @@ import { SpinnerEvent } from './spinner.model';
 })
 export class SpinnerHostDirective {
   events: { [key: string]: Subject<SpinnerEvent> } = {};
-  observables: { [key: string]: () => Observable<any> } = {};
 
   constructor(private element: ElementRef) {
   }
@@ -18,22 +17,29 @@ export class SpinnerHostDirective {
     }
     return this.events[key];
   }
-  register(key: string, trigger: () => Observable<any>) {
-    if (!this.events[key]) {
-      this.events[key] = new Subject<SpinnerEvent>();
-    }
-    this.observables[key] = trigger;
-  }
-  next<T>(key: string) {
+
+  // next<T>(key: string) {
+  //   const e = document.createElement('div');
+  //   e.classList.add('overlay');
+  //   this.element.nativeElement.appendChild(e);
+
+  //   this.events[key].next(SpinnerEvent.START);
+  //   return this.observables[key]().pipe(finalize(() => {
+  //      this.events[key].next(SpinnerEvent.STOP);
+  //      this.element.nativeElement.removeChild(e);
+  //   })) as Observable<T>;
+  // }
+  next<T>(key: string, obs: Observable<T>) {
     const e = document.createElement('div');
     e.classList.add('overlay');
     this.element.nativeElement.appendChild(e);
 
     this.events[key].next(SpinnerEvent.START);
-    return this.observables[key]().pipe(finalize(() => {
-       this.events[key].next(SpinnerEvent.STOP);
-       this.element.nativeElement.removeChild(e);
+    return obs.pipe(finalize(() => {
+      this.events[key].next(SpinnerEvent.STOP);
+      this.element.nativeElement.removeChild(e);
     })) as Observable<T>;
+
   }
 
 }

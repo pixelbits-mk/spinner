@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SpinnerHostDirective } from './spinner-host.directive';
 import { of, timer } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -20,15 +21,13 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
-
-    this.host.register('containers', () => timer(5000));
-    this.host.next('containers').subscribe(t => {
+    this.host.next('containers', timer(5000)).subscribe(t => {
 
     });
   }
   reload() {
-    this.host.next('containers').subscribe(t => {
-      
+    this.host.next('containers', timer(5000)).subscribe(t => {
+
     });
   }
 

@@ -9,14 +9,14 @@ import { MaterialModule } from './material/material.module';
 import { SpinnerDirective } from './spinner.directive';
 import { SpinnerHostDirective } from './spinner-host.directive';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DisableWhileLoadingDirective } from './disable-while-loading.directive';
+import { DisableDirective } from './disable.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpinnerDirective,
     SpinnerHostDirective,
-    DisableWhileLoadingDirective
+    DisableDirective
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,7 @@ import { DisableWhileLoadingDirective } from './disable-while-loading.directive'
   exports: [
     SpinnerDirective,
     SpinnerHostDirective,
-    DisableWhileLoadingDirective
+    DisableDirective
 
   ],
   providers: [],
