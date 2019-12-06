@@ -1,6 +1,9 @@
-<div appSpinnerHost [formGroup]="formGroup">
+<div appSpinnerHost [formGroup]="formGroup" appSpinner="containers">
   <div class="example-container">
     <mat-form-field appSpinner="containers">
+      <input appDisable="containers" formControlName="name" matInput value="gjjgjgjgjhgjhjhjhjhjj" placeholder="Input">
+    </mat-form-field>
+    <mat-form-field appSpinner="vehicles">
       <input appDisable="containers" formControlName="name" matInput value="gjjgjgjgjhgjhjhjhjhjj" placeholder="Input">
     </mat-form-field>
   </div>
@@ -9,5 +12,6 @@
     Hello
   </div>
   <button appDisable="containers" (click)="reload()">Click Me</button>
+  <button appDisable="vehicles" (click)="reload2()">Click Me</button>
 </div>
 

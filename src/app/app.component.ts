@@ -30,5 +30,9 @@ export class AppComponent implements OnInit {
 
     });
   }
+  reload2() {
+    this.host.next('vehicles', timer(5000)).subscribe(t => {
 
+    });
+  }
 }
