@@ -10,6 +10,7 @@ export class SpinnerHostDirective {
   events: { [key: string]: Subject<SpinnerEvent> } = {};
 
   constructor(private element: ElementRef) {
+
   }
   listen(key: string): Observable<SpinnerEvent> {
     if (!this.events[key]) {

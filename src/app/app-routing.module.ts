@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SpinnerDirective } from './spinner.directive';
-import { SpinnerHostDirective } from './spinner-host.directive';
-import { DisableDirective } from './disable.directive';
+import { SpinnerModule } from './spinner/spinner.module';
+
 
 
 const routes: Routes = [];
 
 @NgModule({
    imports: [
-      RouterModule.forRoot(routes)
+      RouterModule.forRoot(routes),
+      SpinnerModule
    ],
    exports: [
-      RouterModule
+      RouterModule,
+      SpinnerModule
    ],
    declarations: [
-      SpinnerDirective,
-      SpinnerHostDirective,
-      DisableDirective
    ]
 })
 export class AppRoutingModule { }

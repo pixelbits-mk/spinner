@@ -6,32 +6,27 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule} from '@angular/material';
 import { MaterialModule } from './material/material.module';
-import { SpinnerDirective } from './spinner.directive';
-import { SpinnerHostDirective } from './spinner-host.directive';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DisableDirective } from './disable.directive';
+
 import { TestComponent } from './test/test.component';
+import { SpinnerModule } from './spinner/spinner.module';
 
 @NgModule({
    declarations: [
       AppComponent,
-      SpinnerDirective,
-      SpinnerHostDirective,
-      DisableDirective,
       TestComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       BrowserAnimationsModule,
-      MatFormFieldModule,
       MaterialModule,
-      ReactiveFormsModule
+      MatFormFieldModule,
+      ReactiveFormsModule,
+      SpinnerModule
    ],
    exports: [
-      SpinnerDirective,
-      SpinnerHostDirective,
-      DisableDirective
+
    ],
    providers: [],
    bootstrap: [

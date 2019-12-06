@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SpinnerHostDirective } from './spinner-host.directive';
 import { of, timer } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+import { SpinnerHostDirective } from './spinner/spinner-host.directive';
 
 @Component({
   selector: 'app-root',
