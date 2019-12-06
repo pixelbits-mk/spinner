@@ -23,12 +23,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit() {
+    this.host.next('containers', timer(5000)).subscribe(t => {
+    });
 
   }
   ngAfterViewInit() {
-    this.host.next('containers', timer(5000)).subscribe(t => {
 
-    });
   }
   reload() {
     this.host.next('containers', timer(5000)).subscribe(t => {

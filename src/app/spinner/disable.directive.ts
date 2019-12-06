@@ -27,6 +27,7 @@ export class DisableDirective implements OnInit {
 
   start() {
     const ngControl = this.injector.get(NgControl, null);
+    console.log(ngControl);
     if (ngControl && ngControl.control) {
       ngControl.control.disable();
     }
