@@ -8,7 +8,7 @@ import { SpinnerService } from './spinner.service';
 export class SpinnerDirective implements OnInit, AfterViewInit {
 
   constructor(private host: SpinnerService, private element: ElementRef) {
-    const key = this.element.nativeElement.getAttribute('appSpinner');
+    const key = this.element.nativeElement.getAttribute('appSpinner').split(',');
     host.listen(key).subscribe(t => {
       switch (t) {
         case SpinnerEvent.START:

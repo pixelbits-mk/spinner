@@ -1,5 +1,5 @@
 import { Injectable, ElementRef } from "@angular/core";
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, merge } from 'rxjs';
 import { SpinnerEvent } from './spinner.model';
 import { finalize } from 'rxjs/operators';
 
@@ -10,11 +10,18 @@ export class SpinnerService {
     constructor() {
 
     }
-    listen(key: string): Observable<SpinnerEvent> {
-        if (!this.events[key]) {
-            this.events[key] = new Subject<SpinnerEvent>();
+    listen(keys: string | string[]): Observable<SpinnerEvent> {
+        if (!Array.isArray(keys)) {
+            keys = [keys];
         }
-        return this.events[key];
+        const subjects = keys.map(key => {
+            if (!this.events[key]) {
+                this.events[key] = new Subject<SpinnerEvent>();
+            }
+            return this.events[key];
+        });
+
+        return merge(...subjects);
     }
 
     next<T>(key: string, obs: Observable<T>) {

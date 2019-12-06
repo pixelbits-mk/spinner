@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerDirective } from './spinner.directive';
 import { DisableDirective } from './disable.directive';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../material/material.module';
+import { OverlayDirective } from './overlay.directive';
 
 
 @NgModule({
@@ -11,10 +10,12 @@ import { MaterialModule } from '../material/material.module';
     CommonModule
   ],
   declarations: [
+    OverlayDirective,
     SpinnerDirective,
     DisableDirective,
   ],
   exports: [
+    OverlayDirective,
     SpinnerDirective,
     DisableDirective
   ]
